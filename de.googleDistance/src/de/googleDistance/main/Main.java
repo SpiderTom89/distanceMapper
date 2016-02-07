@@ -2,6 +2,7 @@ package de.googleDistance.main;
 
 import java.io.IOException;
 
+import de.googleDistance.db.SQLiteConnection;
 import de.googleDistance.rest.Coordinates;
 import de.googleDistance.scan.Scan;
 
@@ -9,7 +10,10 @@ public class Main {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// doScan();
-		calcSteps();
+
+		SQLiteConnection.openConnection();
+
+		// calcSteps();
 	}
 
 	private static void doScan() throws IOException, InterruptedException {

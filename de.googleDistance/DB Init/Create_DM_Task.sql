@@ -1,0 +1,12 @@
+CREATE TABLE `DM_Task` (
+	`Task_Nr`	INTEGER NOT NULL,
+	`Origin_X`	REAL NOT NULL,
+	`Origin_Y`	REAL NOT NULL,
+	`West`	REAL NOT NULL,
+	`North`	REAL NOT NULL,
+	`East`	REAL NOT NULL,
+	`South`	REAL NOT NULL,
+	`Accuracy`	INTEGER NOT NULL,
+	`Last_Accuracy`	INTEGER NOT NULL,
+	PRIMARY KEY(Task_Nr)
+);

@@ -32,10 +32,8 @@ public class DistanceMatrixStatementTest {
 		Assert.assertEquals("Duration stimmt nicht", duration, distanceMatrixBean.getDuration(), 0.0);
 
 		DistanceMatrixStatement.deleteFromDistanceMatrix(startCoord, destinationCoord);
-
 		DistanceMatrixBean deletedDistanceMatrixBean = DistanceMatrixStatement.selectFromDistanceMatrix(startCoord,
 				destinationCoord);
-
 		Assert.assertNull("Wert wurde nicht gelöscht", deletedDistanceMatrixBean);
 	}
 }

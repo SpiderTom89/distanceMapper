@@ -28,4 +28,12 @@ public abstract class DBStatement {
 		Statement createStatement = connection.createStatement();
 		createStatement.executeQuery(getStatement());
 	}
+
+	public final static void executeUpdate(String statement) throws SQLException {
+		Connection connection = SQLiteConnection.getConnection();
+		Statement connStatement = connection.createStatement();
+		connStatement.executeUpdate(statement);
+		connection.commit();
+		connStatement.close();
+	}
 }

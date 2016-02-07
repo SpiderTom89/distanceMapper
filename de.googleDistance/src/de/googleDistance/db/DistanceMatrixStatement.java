@@ -20,11 +20,7 @@ public final class DistanceMatrixStatement extends DBStatement {
 				+ startXValue + ", " + startYValue + ", " + destinationXValue + ", " + destinationYValue + ", "
 				+ duration + ")";
 
-		Connection connection = SQLiteConnection.getConnection();
-		Statement connStatement = connection.createStatement();
-		connStatement.executeUpdate(statement);
-		connection.commit();
-		connStatement.close();
+		executeUpdate(statement);
 	}
 
 	public static DistanceMatrixBean selectFromDistanceMatrix(CartasianCoordinates start,
@@ -34,9 +30,9 @@ public final class DistanceMatrixStatement extends DBStatement {
 		double destinationXValue = destination.getXValue();
 		double destinationYValue = destination.getYValue();
 
-		String statement = "SELECT * FROM dm_distance_matrix WHERE start_X = " + startXValue + " AND start_Y = "
-				+ startYValue + " AND destination_X = " + destinationXValue + " AND destination_Y = "
-				+ destinationYValue;
+		String statement = "SELECT start_x, start_y, destination_x, destination_y, duration FROM dm_distance_matrix WHERE start_X = "
+				+ startXValue + " AND start_Y = " + startYValue + " AND destination_X = " + destinationXValue
+				+ " AND destination_Y = " + destinationYValue;
 
 		Connection connection = SQLiteConnection.getConnection();
 		Statement connStatement = connection.createStatement();
@@ -72,10 +68,6 @@ public final class DistanceMatrixStatement extends DBStatement {
 				+ startYValue + " AND destination_X = " + destinationXValue + " AND destination_Y = "
 				+ destinationYValue;
 
-		Connection connection = SQLiteConnection.getConnection();
-		Statement connStatement = connection.createStatement();
-		connStatement.executeUpdate(statement);
-		connection.commit();
-		connStatement.close();
+		executeUpdate(statement);
 	}
 }

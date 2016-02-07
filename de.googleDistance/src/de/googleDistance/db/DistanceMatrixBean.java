@@ -4,9 +4,9 @@ import de.googleDistance.coordinates.CartasianCoordinates;
 
 public class DistanceMatrixBean {
 
-	CartasianCoordinates m_start;
-	CartasianCoordinates m_destination;
-	long m_duration;
+	private CartasianCoordinates m_start;
+	private CartasianCoordinates m_destination;
+	private long m_duration;
 
 	public DistanceMatrixBean(CartasianCoordinates start, CartasianCoordinates destination, long duration) {
 		m_start = start;

@@ -1,5 +1,6 @@
 package de.googleDistance.coordinates;
 
+// TODO lng und lat noch vertauschen
 public class SphereCoordinates {
 
 	private double m_lng;
@@ -28,7 +29,7 @@ public class SphereCoordinates {
 
 	@Override
 	public String toString() {
-		return getLng() + "," + getLat();
+		return "(" + getLng() + "," + getLat() + ")";
 	}
 
 	public boolean isLeftOf(SphereCoordinates compCoord) {

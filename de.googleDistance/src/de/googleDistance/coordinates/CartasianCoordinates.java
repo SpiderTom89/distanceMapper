@@ -27,7 +27,7 @@ public class CartasianCoordinates {
 	}
 
 	public String toString() {
-		return getXValue() + ", " + getYValue();
+		return "(" + getXValue() + ", " + getYValue() + ")";
 	}
 
 	@Override

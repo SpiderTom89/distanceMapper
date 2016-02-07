@@ -8,7 +8,7 @@ import de.googleDistance.scan.Scan;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException, InterruptedException {
+	public static void main(String[] args) throws Exception {
 		// doScan();
 
 		SQLiteConnection.openConnection();

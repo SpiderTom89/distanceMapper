@@ -29,4 +29,16 @@ public class CartasianCoordinates {
 	public String toString() {
 		return getXValue() + ", " + getYValue();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof CartasianCoordinates)) {
+			return false;
+		}
+		return m_xValue == ((CartasianCoordinates) obj).getXValue()
+				&& m_yValue == ((CartasianCoordinates) obj).getYValue();
+	}
 }

@@ -5,18 +5,18 @@ import java.io.StringReader;
 
 import org.xml.sax.InputSource;
 
+import de.googleDistance.coordinates.SphereCoordinates;
 import de.googleDistance.csv.WriteCsv;
-import de.googleDistance.rest.Coordinates;
 import de.googleDistance.rest.DistanceService;
 import de.googleDistance.xml.XmlDistanceParser;
 
 public class Scan {
 
-	private Coordinates m_origin;
-	private Coordinates m_coordLU;
-	private Coordinates m_coordRU;
-	private Coordinates m_coordLD;
-	private Coordinates m_coordRD;
+	private SphereCoordinates m_origin;
+	private SphereCoordinates m_coordLU;
+	private SphereCoordinates m_coordRU;
+	private SphereCoordinates m_coordLD;
+	private SphereCoordinates m_coordRD;
 
 	private double m_offset;
 
@@ -35,7 +35,7 @@ public class Scan {
 	public Scan() {
 	}
 
-	public Scan(Coordinates origin, Coordinates coordLU, Coordinates coordRU, Coordinates coordLD, Coordinates coordRD,
+	public Scan(SphereCoordinates origin, SphereCoordinates coordLU, SphereCoordinates coordRU, SphereCoordinates coordLD, SphereCoordinates coordRD,
 			double offset) {
 		m_origin = origin;
 		m_coordLU = coordLU;
@@ -51,8 +51,8 @@ public class Scan {
 
 	public void scan() throws IOException, InterruptedException { // offset in
 																	// meters
-		Coordinates startPoint = m_coordLU;
-		Coordinates currentPoint = startPoint;
+		SphereCoordinates startPoint = m_coordLU;
+		SphereCoordinates currentPoint = startPoint;
 
 		Double numberOfSteps = calculateSteps() * 1.0;
 		Double currentStep = 0.0;
@@ -93,7 +93,7 @@ public class Scan {
 				currentPoint = getShiftedCoordinates(currentPoint, 0, m_offset);
 			}
 
-			currentPoint = new Coordinates(currentPoint.getLng(), m_coordLU.getLat());
+			currentPoint = new SphereCoordinates(currentPoint.getLng(), m_coordLU.getLat());
 			currentPoint = getShiftedCoordinates(currentPoint, m_offset, 0);
 		}
 
@@ -101,7 +101,7 @@ public class Scan {
 		m_data.closeFile();
 	}
 
-	public double distFrom(Coordinates coord1, Coordinates coord2) {
+	public double distFrom(SphereCoordinates coord1, SphereCoordinates coord2) {
 		double lat1 = coord1.getLat();
 		double lng1 = coord1.getLng();
 		double lat2 = coord2.getLat();
@@ -128,7 +128,7 @@ public class Scan {
 		return stepsLng * stepsLat;
 	}
 
-	public Coordinates getShiftedCoordinates(Coordinates origin, double offsetLat, double offsetLng) {
+	public SphereCoordinates getShiftedCoordinates(SphereCoordinates origin, double offsetLat, double offsetLng) {
 		// Position, decimal degrees
 		double lon = origin.getLng();
 		double lat = origin.getLat();
@@ -145,10 +145,10 @@ public class Scan {
 		double lonO = lon + dLon * 180 / pi;
 		double latO = lat + dLat * 180 / pi;
 
-		return new Coordinates(lonO, latO);
+		return new SphereCoordinates(lonO, latO);
 	}
 
-	private void writeInData(Coordinates currentPoint, Long duration, Long distance) throws IOException {
+	private void writeInData(SphereCoordinates currentPoint, Long duration, Long distance) throws IOException {
 		m_data.addLine(m_origin, currentPoint, duration, distance, distance / (duration + 0.1));
 
 		// double lng = currentPoint.getLng();
@@ -183,7 +183,7 @@ public class Scan {
 
 	}
 
-	private void printConsole(Long percentDone, Coordinates currentPoint, Long duration, Long distance,
+	private void printConsole(Long percentDone, SphereCoordinates currentPoint, Long duration, Long distance,
 			double distProDur) {
 		System.out.print(percentDone + "%");
 		System.out.print("   ");

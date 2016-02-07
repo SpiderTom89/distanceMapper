@@ -2,8 +2,8 @@ package de.googleDistance.main;
 
 import java.io.IOException;
 
+import de.googleDistance.coordinates.SphereCoordinates;
 import de.googleDistance.db.SQLiteConnection;
-import de.googleDistance.rest.Coordinates;
 import de.googleDistance.scan.Scan;
 
 public class Main {
@@ -17,12 +17,12 @@ public class Main {
 	}
 
 	private static void doScan() throws IOException, InterruptedException {
-		Coordinates origin = new Coordinates(48.101659, 11.668225); // Hippelstr.
+		SphereCoordinates origin = new SphereCoordinates(48.101659, 11.668225); // Hippelstr.
 
-		Coordinates coordLU = new Coordinates(48.117075, 11.645094);
-		Coordinates coordRU = new Coordinates(48.117075, 11.690412);
-		Coordinates coordLD = new Coordinates(48.091569, 11.645094);
-		Coordinates coordRD = new Coordinates(48.091569, 11.690412);
+		SphereCoordinates coordLU = new SphereCoordinates(48.117075, 11.645094);
+		SphereCoordinates coordRU = new SphereCoordinates(48.117075, 11.690412);
+		SphereCoordinates coordLD = new SphereCoordinates(48.091569, 11.645094);
+		SphereCoordinates coordRD = new SphereCoordinates(48.091569, 11.690412);
 
 		Scan scan = new Scan(origin, coordLU, coordRU, coordLD, coordRD, 50); // in
 																				// meters
@@ -30,13 +30,13 @@ public class Main {
 	}
 
 	private static void calcSteps() {
-		Coordinates coordLU = new Coordinates(48.117075, 11.645094);
-		Coordinates coordRU = new Coordinates(48.117075, 11.690412);
-		Coordinates coordLD = new Coordinates(48.091569, 11.645094);
+		SphereCoordinates coordLU = new SphereCoordinates(48.117075, 11.645094);
+		SphereCoordinates coordRU = new SphereCoordinates(48.117075, 11.690412);
+		SphereCoordinates coordLD = new SphereCoordinates(48.091569, 11.645094);
 
 		Long countX = 0L;
 		Long countY = 0L;
-		Coordinates currentPoint = coordLU;
+		SphereCoordinates currentPoint = coordLU;
 		Scan scan = new Scan();
 
 		while (currentPoint.isAboveOf(coordLD)) {

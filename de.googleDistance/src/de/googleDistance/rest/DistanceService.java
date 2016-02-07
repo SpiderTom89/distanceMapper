@@ -1,8 +1,10 @@
 package de.googleDistance.rest;
 
+import de.googleDistance.coordinates.SphereCoordinates;
+
 public class DistanceService {
 
-	public static String getDistance(Coordinates origin, Coordinates destination) {
+	public static String getDistance(SphereCoordinates origin, SphereCoordinates destination) {
 		boolean withKey = false;
 		String urlString = new String();
 		if (withKey) {

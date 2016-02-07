@@ -1,11 +1,11 @@
-package de.googleDistance.rest;
+package de.googleDistance.coordinates;
 
-public class Coordinates {
+public class SphereCoordinates {
 
 	private double m_lng;
 	private double m_lat;
 
-	public Coordinates(double lng, double lat) {
+	public SphereCoordinates(double lng, double lat) {
 		m_lng = lng;
 		m_lat = lat;
 	}
@@ -31,15 +31,15 @@ public class Coordinates {
 		return getLng() + "," + getLat();
 	}
 
-	public boolean isLeftOf(Coordinates compCoord) {
+	public boolean isLeftOf(SphereCoordinates compCoord) {
 		return m_lat <= compCoord.getLat();
 	}
 
-	public boolean isBelowOf(Coordinates compCoord) {
+	public boolean isBelowOf(SphereCoordinates compCoord) {
 		return m_lng <= compCoord.getLng();
 	}
 
-	public boolean isAboveOf(Coordinates compCoord) {
+	public boolean isAboveOf(SphereCoordinates compCoord) {
 		return m_lng >= compCoord.getLng();
 	}
 }

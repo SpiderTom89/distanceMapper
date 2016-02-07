@@ -3,7 +3,7 @@ package de.googleDistance.csv;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import de.googleDistance.rest.Coordinates;
+import de.googleDistance.coordinates.SphereCoordinates;
 
 public class WriteCsv {
 
@@ -35,7 +35,7 @@ public class WriteCsv {
 		m_fileWriter.append(NEW_LINE_SEPARATOR);
 	}
 
-	public void addLine(Coordinates origin, Coordinates destination, Long duration, Long distance, double distPerDur)
+	public void addLine(SphereCoordinates origin, SphereCoordinates destination, Long duration, Long distance, double distPerDur)
 			throws IOException {
 		m_fileWriter.append(String.valueOf(origin.getLng()));
 		m_fileWriter.append(COMMA_DELIMITER);

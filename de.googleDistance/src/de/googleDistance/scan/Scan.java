@@ -7,7 +7,7 @@ import org.xml.sax.InputSource;
 
 import de.googleDistance.coordinates.SphereCoordinates;
 import de.googleDistance.csv.WriteCsv;
-import de.googleDistance.rest.DistanceService;
+import de.googleDistance.rest.DirectionApiService;
 import de.googleDistance.xml.XmlDistanceParser;
 
 public class Scan {
@@ -67,7 +67,7 @@ public class Scan {
 				Long numberOfTries = 0L;
 				while (!gotResult) {
 					numberOfTries++;
-					restDist = DistanceService.getDistance(m_origin, currentPoint);
+					restDist = DirectionApiService.getDistance(m_origin, currentPoint);
 					if (!restDist.contains("You have exceeded your rate-limit for this API")
 							&& !restDist.contains("You have exceeded your daily request quota for this API")) {
 						gotResult = true;

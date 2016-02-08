@@ -2,7 +2,7 @@ package de.googleDistance.rest;
 
 import de.googleDistance.coordinates.SphereCoordinates;
 
-public class DistanceService {
+public class DirectionApiService {
 
 	public static String getDistance(SphereCoordinates origin, SphereCoordinates destination) {
 		boolean withKey = false;

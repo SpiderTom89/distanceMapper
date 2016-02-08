@@ -3,7 +3,7 @@ package de.googleDistance.main;
 import java.io.IOException;
 
 import de.googleDistance.coordinates.SphereCoordinates;
-import de.googleDistance.db.SQLiteConnection;
+import de.googleDistance.json.DistanceMatrixApiService;
 import de.googleDistance.scan.Scan;
 
 public class Main {
@@ -11,7 +11,9 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		// doScan();
 
-		SQLiteConnection.openConnection();
+		// SQLiteConnection.openConnection();
+
+		DistanceMatrixApiService.getDistance2(null, null);
 
 		// calcSteps();
 	}
